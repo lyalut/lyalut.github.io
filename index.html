@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lya Lutfuntika — Product Marketing · Social Media · Digital Marketing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;900&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&amp;display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: #EDEFF2;
+    --paper-raised: #F7F8F9;
+    --ink: #14171C;
+    --ink-soft: #4A4F58;
+    --line: #C7CBD1;
+    --stamp: #C81E3A;
+    --stamp-dim: #C81E3A1A;
+    --gold: #B8863B;
+    --gold-dim: #B8863B1A;
+    --mono: 'IBM Plex Mono', monospace;
+    --display: 'Archivo', sans-serif;
+    --serif: 'Source Serif 4', serif;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{ background:var(--paper); color:var(--ink); font-family:var(--serif); font-size:17px; line-height:1.6; }
+  a{color:inherit;}
+  ::selection{background:var(--stamp); color:#fff;}
+  .wrap{max-width:920px; margin:0 auto; padding:0 28px;}
+
+  .docbar{ border-bottom:1px solid var(--line); font-family:var(--mono); font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft); }
+  .docbar .wrap{ display:flex; justify-content:space-between; align-items:center; padding-top:14px; padding-bottom:14px; flex-wrap:wrap; gap:8px; }
+  .docbar .status{color:var(--stamp); font-weight:500;}
+  .docbar .status::before{content:"● "; }
+
+  .hero{padding:64px 0 56px; position:relative;}
+  .memo-fields{ font-family:var(--mono); font-size:12px; color:var(--ink-soft); display:grid; grid-template-columns:auto 1fr; gap:4px 14px; max-width:460px; margin-bottom:36px; }
+  .memo-fields dt{text-transform:uppercase; letter-spacing:.06em; color:var(--ink-soft);}
+  .memo-fields dd{color:var(--ink);}
+
+  .stamp{ position:absolute; top:56px; right:28px; border:2.5px solid var(--stamp); color:var(--stamp); font-family:var(--mono); font-weight:600; font-size:13px; letter-spacing:.12em; text-transform:uppercase; padding:8px 14px; transform:rotate(6deg); border-radius:3px; background:var(--stamp-dim); }
+
+  h1.name{ font-family:var(--display); font-weight:900; font-size:clamp(40px, 7vw, 64px); line-height:1.02; letter-spacing:-0.01em; margin-bottom:14px; }
+  .role-line{ font-family:var(--display); font-weight:600; font-size:20px; color:var(--stamp); margin-bottom:14px; }
+  .role-tags{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:20px; }
+  .role-tag{ font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:.05em; border:1px solid var(--ink); border-radius:20px; padding:5px 12px; color:var(--ink); }
+  .entry-tags{ display:flex; gap:6px; flex-wrap:wrap; margin-bottom:16px; }
+  .entry-tag{ font-family:var(--mono); font-size:10px; text-transform:uppercase; letter-spacing:.05em; background:var(--gold-dim); color:var(--gold); border:1px solid var(--gold); border-radius:3px; padding:2px 8px; }
+  .positioning{ font-family:var(--serif); font-size:19px; color:var(--ink-soft); max-width:660px; margin-bottom:32px; }
+  .cta-row{display:flex; gap:14px; flex-wrap:wrap;}
+  .btn{ font-family:var(--mono); font-size:13px; text-transform:uppercase; letter-spacing:.06em; padding:12px 22px; border-radius:3px; text-decoration:none; display:inline-block; transition:transform .15s ease, box-shadow .15s ease; }
+  .btn-primary{background:var(--ink); color:var(--paper);}
+  .btn-secondary{border:1px solid var(--ink); color:var(--ink);}
+  .btn:hover{transform:translateY(-2px);}
+
+  section{padding:52px 0;}
+  .section-head{ display:flex; align-items:baseline; gap:16px; margin-bottom:32px; border-bottom:1px solid var(--line); padding-bottom:14px; }
+  .section-num{ font-family:var(--mono); font-size:12px; color:var(--gold); letter-spacing:.08em; }
+  .section-title{ font-family:var(--display); font-weight:700; font-size:26px; letter-spacing:-0.01em; }
+
+  .statement{ background:var(--paper-raised); border-left:4px solid var(--gold); padding:28px 30px; font-family:var(--serif); font-size:20px; font-style:italic; color:var(--ink); line-height:1.55; }
+  .statement .attrib{ display:block; margin-top:14px; font-family:var(--mono); font-style:normal; font-size:12px; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-soft); }
+
+  .entry{ border:1px solid var(--line); border-radius:6px; background:var(--paper-raised); padding:32px 34px; margin-bottom:24px; }
+  .entry-head{ display:flex; justify-content:space-between; align-items:flex-start; gap:16px; flex-wrap:wrap; margin-bottom:8px; }
+  .entry-code{ font-family:var(--mono); font-weight:600; font-size:12px; color:var(--gold); letter-spacing:.09em; text-transform:uppercase; }
+  .entry-date{ font-family:var(--mono); font-size:12px; color:var(--ink-soft); }
+  .entry-title{ font-family:var(--display); font-weight:700; font-size:23px; line-height:1.25; margin-bottom:8px; letter-spacing:-0.005em; }
+  .entry-sub{ font-family:var(--mono); font-size:12px; color:var(--ink-soft); margin-bottom:18px; line-height:1.6; }
+  .sar{display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-bottom:20px;}
+  .sar div h4{ font-family:var(--mono); font-weight:600; font-size:11.5px; text-transform:uppercase; letter-spacing:.09em; color:var(--gold); margin-bottom:7px; }
+  .sar div p{font-size:15.5px; line-height:1.65; color:var(--ink);}
+  .metrics{display:flex; gap:28px; flex-wrap:wrap; border-top:1px dashed var(--line); padding-top:16px;}
+  .metric .num{ font-family:var(--display); font-weight:900; font-size:26px; color:var(--stamp); line-height:1; }
+  .metric .label{ font-family:var(--mono); font-size:11px; text-transform:uppercase; color:var(--ink-soft); letter-spacing:.05em; margin-top:4px; }
+
+  .matrix{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:24px;}
+  .cap-group h4{ font-family:var(--mono); font-size:12px; text-transform:uppercase; letter-spacing:.06em; color:var(--gold); margin-bottom:10px; padding-bottom:8px; border-bottom:1px solid var(--line); }
+  .cap-group ul{list-style:none;}
+  .cap-group li{ font-size:15px; padding:5px 0; color:var(--ink-soft); }
+  .cap-group li::before{content:"— "; color:var(--line);}
+
+  .tags{display:flex; flex-wrap:wrap; gap:8px;}
+  .tag{ font-family:var(--mono); font-size:12px; border:1px solid var(--line); border-radius:20px; padding:6px 14px; color:var(--ink-soft); }
+
+  footer{ padding:64px 0 56px; border-top:1px solid var(--line); margin-top:20px; }
+  .footer-title{ font-family:var(--display); font-weight:900; font-size:clamp(28px,5vw,44px); margin-bottom:18px; max-width:600px; }
+  .footer-links{display:flex; gap:24px; flex-wrap:wrap; margin-top:24px;}
+  .footer-links a{ font-family:var(--mono); font-size:13px; text-transform:uppercase; letter-spacing:.06em; text-decoration:none; border-bottom:1px solid var(--ink); padding-bottom:2px; }
+  .footer-meta{ margin-top:48px; font-family:var(--mono); font-size:11px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.06em; }
+
+  .note{ font-family:var(--mono); font-size:11px; color:var(--gold); background:var(--gold-dim); border:1px dashed var(--gold); padding:3px 8px; border-radius:3px; margin-left:8px; }
+
+  .exhibit{ margin:18px 0; border:1px solid var(--line); border-radius:4px; overflow:hidden; background:#fff; }
+  .exhibit img{ display:block; width:100%; height:auto; }
+  .exhibit-cap{ font-family:var(--mono); font-size:11px; color:var(--ink-soft); padding:8px 12px; border-top:1px solid var(--line); background:var(--paper-raised); }
+
+  .doc-links{ display:flex; gap:16px; flex-wrap:wrap; margin-top:16px; padding-top:16px; border-top:1px dashed var(--line); }
+  .doc-links a{ font-family:var(--mono); font-size:12px; text-transform:uppercase; letter-spacing:.05em; text-decoration:none; color:var(--stamp); border-bottom:1px solid var(--stamp); padding-bottom:1px; }
+  .doc-links a::before{ content:"↗ "; }
+
+  .campaign-card{ border-top:1px dashed var(--line); padding-top:24px; margin-top:24px; }
+  .campaign-card:first-of-type{ border-top:none; padding-top:0; margin-top:0; }
+  .campaign-title{ font-family:var(--display); font-weight:700; font-size:20px; margin-bottom:3px; letter-spacing:-0.005em; }
+  .campaign-sub{ font-family:var(--mono); font-size:11px; color:var(--gold); text-transform:uppercase; letter-spacing:.06em; margin-bottom:20px; }
+  .field{ margin-bottom:20px; }
+  .field h5{ font-family:var(--mono); font-weight:600; font-size:11.5px; text-transform:uppercase; letter-spacing:.09em; color:var(--gold); margin-bottom:6px; }
+  .field p{ font-size:15.5px; line-height:1.65; color:var(--ink); }
+  .field ul, .field ol{ padding-left:20px; margin-top:2px; }
+  .field li{ font-size:15.5px; line-height:1.6; color:var(--ink); margin-bottom:5px; }
+  .field .hook{ font-style:italic; color:var(--stamp); }
+  .field-row{ display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+  @media (max-width:640px){ .field-row{ grid-template-columns:1fr; gap:0; } }
+  .resp-list{ display:flex; flex-wrap:wrap; gap:6px; padding-left:0; list-style:none; }
+  .resp-list li{ font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:.04em; background:var(--paper); border:1px solid var(--line); border-radius:20px; padding:4px 12px; margin:0; color:var(--ink-soft); }
+  .impact-box{ background:var(--gold-dim); border:1px dashed var(--gold); border-radius:6px; padding:20px 24px; margin-top:24px; }
+  .impact-box h5{ font-family:var(--mono); font-weight:600; font-size:11.5px; text-transform:uppercase; letter-spacing:.09em; color:var(--gold); margin-bottom:9px; }
+  .impact-box p{ font-size:15.5px; line-height:1.65; color:var(--ink); }
+
+  @media (max-width:640px){
+    .sar{grid-template-columns:1fr;}
+    .stamp{position:static; display:inline-block; margin-bottom:24px; transform:rotate(-2deg);}
+    .hero{padding-top:40px;}
+  }
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} .btn{transition:none;} }
+  :focus-visible{outline:2px solid var(--stamp); outline-offset:2px;}
+</style>
+</head>
+<body>
+<div id="page-content">
+
+  <div class="docbar">
+    <div class="wrap">
+      <span>Launch Brief · Talent Edition</span>
+      <span class="status">Status: Open to opportunities</span>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <section class="hero">
+      <div class="stamp">Launch Ready</div>
+      <dl class="memo-fields">
+        <dt>To</dt><dd>Hiring Team</dd>
+        <dt>From</dt><dd>Lya Lutfuntika</dd>
+        <dt>Re</dt><dd>Product Marketing · Social Media · Digital Marketing — MBA Candidate, University of San Francisco</dd>
+      </dl>
+      <h1 class="name">Lya Lutfuntika</h1>
+      <div class="role-line">Marketing Generalist — Content, Channels &amp; Product Strategy</div>
+      <div class="role-tags">
+        <span class="role-tag">Product Marketing Manager</span>
+        <span class="role-tag">Social Media Manager</span>
+        <span class="role-tag">Digital Marketing</span>
+      </div>
+      <p class="positioning">
+        I've done marketing from both ends: as the person filming, editing, and publishing the
+        content, and as the person modeling whether a go-to-market plan is worth the investment.
+        Before business school, I built and ran a small ecommerce brand end to end — the site, the
+        TikTok and Instagram content, the paid social campaigns, and the community that grew around
+        it. In my MBA I've added predictive analytics (JMP) and data
+        storytelling (Tableau) to back that instinct with numbers. I'm looking to bring that mix
+        into a Product Marketing, Social Media Management, or Digital Marketing role.</p>
+      <div class="cta-row">
+        <a href="mailto:llutfuntika@dons.usfca.edu" class="btn btn-primary">Email Me</a>
+        <a href="https://www.linkedin.com/in/lyalutfuntika/" class="btn btn-secondary" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="#" class="btn btn-secondary">Download Resume (PDF)</a>
+      </div>
+    </section>
+
+    <section id="positioning">
+      <div class="section-head">
+        <span class="section-num">01</span>
+        <span class="section-title">Positioning Statement</span>
+      </div>
+      <div class="statement">
+        "Whether the job is building a content calendar, running a paid campaign, or modeling
+        whether a launch will pay off, I bring the same instinct: understand the audience first,
+        then prove it with numbers. I've built brand awareness from zero on TikTok, run paid social
+        that converted, and modeled go-to-market decisions with MBA-level rigor — I don't see these
+        as three different skillsets, I see them as one job done at different altitudes."
+        <span class="attrib">— Working philosophy</span>
+      </div>
+    </section>
+
+    <section id="work">
+      <div class="section-head">
+        <span class="section-num">02</span>
+        <span class="section-title">Track Record</span>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head">
+          <span class="entry-code">Codename: E-Commerce Crafts</span>
+          <span class="entry-date">Founder-Operator · TikTok Content Strategy</span>
+        </div>
+        <div class="entry-title">E-commerce-Crafts</div>
+        <div class="entry-tags">
+          <span class="entry-tag">Social Media Manager</span>
+          <span class="entry-tag">Digital Marketing</span>
+        </div>
+        <div class="entry-sub">
+          <a href="https://www.partydeco.id" target="_blank" rel="noopener" style="color:var(--stamp); border-bottom:1px solid var(--stamp); text-decoration:none;">partydeco.id</a>
+          — handcrafted wedding ring boxes &amp; jewelry boxes, Indonesia</div>
+
+        <div class="campaign-card">
+          <div class="campaign-title">Sales-Driven Campaign</div>
+          <div class="campaign-sub">Flagship video · 1.6M views</div>
+
+          <div class="field">
+            <h5>Project Overview</h5>
+            <p>Partydeco specializes in wedding ring boxes and jewelry boxes. In Indonesia, wedding
+            jewelry (<em>mahar</em>) is one of the most meaningful parts of the ceremony — valuable,
+            and the literal centerpiece during the <em>akad</em>. I created a TikTok video encouraging
+            couples to make their mahar stand out on their special day, developed end to end: hook,
+            concept, filming, editing, on-screen copy, publishing, and hashtags.</p>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <h5>Goal</h5>
+              <p>Generate sales by increasing purchase intent for Partydeco's wedding ring box.</p>
+            </div>
+            <div class="field">
+              <h5>Target Audience</h5>
+              <p>Couples aged 22–39 preparing for their wedding within the next few months.</p>
+            </div>
+          </div>
+          <div class="field">
+            <h5>Consumer Insight</h5>
+            <p>Couples already know their wedding jewelry will be one of the most meaningful and
+            valuable items during the ceremony — but many don't realize presentation matters just as
+            much. If the jewelry is the centerpiece of the akad, it deserves to be presented
+            beautifully. That became the hook:
+            <span class="hook">"Biar maharmu cakep di meja akad."</span> ("Make your wedding jewelry
+            look beautiful on the akad table.")</p>
+          </div>
+          <div class="field">
+            <h5>Content Strategy</h5>
+            <ol>
+              <li><strong>Started with an emotional hook</strong> — to stop the right audience from
+              scrolling and make them curious enough to keep watching.</li>
+              <li><strong>Showed the product's beauty first</strong> — since customers buy largely on
+              appearance, the opening shot led with the most beautiful angle before any features.</li>
+              <li><strong>Built trust for online buyers</strong> — Partydeco has one physical gallery
+              but serves 35+ cities across Indonesia, so I used close-up, multi-angle shots of
+              craftsmanship to reduce hesitation from buying sight-unseen.</li>
+              <li><strong>Reduced purchase anxiety</strong> — closed by clearly stating Partydeco's
+              damage/loss replacement guarantee, addressing the biggest fear in online shopping:
+              delivery.</li>
+            </ol>
+          </div>
+          <div class="field">
+            <h5>My Responsibilities</h5>
+            <ul class="resp-list">
+              <li>Content ideation</li><li>Hook development</li><li>Script writing</li>
+              <li>Video production</li><li>Video editing</li><li>TikTok publishing</li>
+              <li>Hashtag strategy</li><li>Performance analysis</li>
+            </ul>
+          </div>
+          <div class="field">
+            <h5>Results</h5>
+            <div class="metrics" style="border-top:none; padding-top:0;">
+              <div class="metric"><div class="num">1.6M</div><div class="label">Views</div></div>
+              <div class="metric"><div class="num">27K</div><div class="label">Likes</div></div>
+              <div class="metric"><div class="num">743</div><div class="label">Comments</div></div>
+              <div class="metric"><div class="num">7.7K</div><div class="label">Shares</div></div>
+              <div class="metric"><div class="num">14K</div><div class="label">Saves</div></div>
+            </div>
+          </div>
+          <div class="field">
+            <h5>Reflection</h5>
+            <p>Since the goal was sales, not just views, it mattered to show both how beautiful the
+            product was and why customers could trust buying it online. A strong hook is one of the
+            biggest drivers of performance — it earns attention, then creates room to communicate
+            value before asking for the purchase.</p>
+          </div>
+          <div class="field">
+            <h5>Tools</h5>
+            <ul class="resp-list"><li>VN Editor</li><li>ChatGPT</li><li>TikTok Editing Features</li></ul>
+          </div>
+          <div class="doc-links" style="border-top:none; padding-top:0;">
+            <a href="https://vt.tiktok.com/ZS4aToKSD/" target="_blank" rel="noopener">Watch the video</a>
+          </div>
+          <div class="impact-box">
+            <h5>Broader Impact</h5>
+            <p>This wasn't a one-time viral success. The same hook-and-trust framework became a
+            repeatable strategy for Partydeco's TikTok account — I used it to create 20+ videos,
+            several reaching hundreds of thousands of views on their own (800K, 600K, 300K, and
+            200K+). The strategy also proved scalable beyond me: when other team members executed
+            it using the same framework, it still consistently drove tens of thousands to hundreds
+            of thousands of views.</p>
+          </div>
+        </div>
+
+        <div class="campaign-card">
+          <div class="campaign-title">Brand Awareness Campaign</div>
+          <div class="campaign-sub">800K+ views</div>
+
+          <div class="field">
+            <h5>Project Overview</h5>
+            <p>A second TikTok campaign for Partydeco's handcrafted wedding ring boxes — this time
+            designed to introduce the brand to couples looking for wedding accessory inspiration,
+            rather than push directly for a sale. Developed end to end: content idea, hook, video
+            concept, filming, editing, on-screen copy, publishing, hashtags, and performance analysis.</p>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <h5>Goal</h5>
+              <p>Build brand awareness by introducing Partydeco as a wedding accessory brand to
+              couples preparing for their wedding.</p>
+            </div>
+            <div class="field">
+              <h5>Target Audience</h5>
+              <p>Couples aged 22–39 preparing for their wedding within the next few months and
+              looking for wedding inspiration, including accessories and ceremony details.</p>
+            </div>
+          </div>
+          <div class="field">
+            <h5>Consumer Insight</h5>
+            <p>In Indonesia, many couples choose to marry on "beautiful dates" (<em>tanggal
+            cantik</em>) — repeating numbers or memorable calendar dates — because they want their
+            wedding day to feel more meaningful. I used this cultural behavior to create content
+            that drew engagement from couples who already had a date and those still deciding.
+            The resulting comments also became a live signal of which months had the highest
+            wedding demand — intel Partydeco could use to time future marketing.</p>
+          </div>
+          <div class="field">
+            <h5>Content Strategy</h5>
+            <p>Instead of promoting the ring box directly, I built content around a topic that
+            naturally attracts the audience: popular wedding dates.</p>
+            <ol>
+              <li><strong>Captured attention</strong> through a culturally relevant topic — a list of
+              upcoming "beautiful wedding dates" as the hook.</li>
+              <li><strong>Encouraged interaction</strong> by prompting viewers to comment about their
+              own wedding plans.</li>
+              <li><strong>Introduced the product naturally</strong> — Partydeco's ring box stayed in
+              frame as the visual backdrop throughout, gaining repeated exposure without feeling like
+              an ad.</li>
+              <li><strong>Increased brand familiarity</strong> among couples preparing for marriage
+              through visual storytelling rather than a pitch.</li>
+            </ol>
+          </div>
+          <div class="field">
+            <h5>My Responsibilities</h5>
+            <ul class="resp-list">
+              <li>Content ideation</li><li>Hook development</li><li>Script writing</li>
+              <li>Video production</li><li>Video editing</li><li>TikTok publishing</li>
+              <li>Hashtag strategy</li><li>Performance analysis</li>
+            </ul>
+          </div>
+          <div class="field">
+            <h5>Results</h5>
+            <div class="metrics" style="border-top:none; padding-top:0;">
+              <div class="metric"><div class="num">800K+</div><div class="label">Views</div></div>
+              <div class="metric"><div class="num">15K</div><div class="label">Likes</div></div>
+              <div class="metric"><div class="num">751</div><div class="label">Comments</div></div>
+              <div class="metric"><div class="num">7.9K</div><div class="label">Shares</div></div>
+              <div class="metric"><div class="num">5.1K</div><div class="label">Saves</div></div>
+            </div>
+          </div>
+          <div class="field">
+            <h5>Reflection</h5>
+            <p>This content aimed to build awareness, not drive an immediate sale — proof that
+            social content doesn't need to open with a product message. Understanding audience
+            behavior and building around what they already care about creates stronger brand
+            connections, and integrating the product naturally into content people already want to
+            watch increases visibility without feeling like advertising.</p>
+          </div>
+          <div class="field">
+            <h5>Tools</h5>
+            <ul class="resp-list"><li>VN Editor</li><li>ChatGPT</li><li>TikTok Editing Features</li></ul>
+          </div>
+          <div class="doc-links" style="border-top:none; padding-top:0;">
+            <a href="https://vt.tiktok.com/ZS4awHQMT/" target="_blank" rel="noopener">Watch the video</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head">
+          <span class="entry-code">Codename: Films-Event Management</span>
+          <span class="entry-date">Founder/Co-Founder · Event Film ID · 2+ years</span>
+        </div>
+        <div class="entry-title">Building and Scaling a National Film-Premiere Events Business</div>
+        <div class="entry-tags">
+          <span class="entry-tag">Product Marketing</span>
+          <span class="entry-tag">Social Media Manager</span>
+        </div>
+        <div class="entry-sub">Co-founded and helped run Event Film ID, staging premiere-week screening events for Indonesian films in partnership with executive producers and cinemas</div>
+        <div class="sar">
+          <div>
+            <h4>Situation</h4>
+            <p>Indonesian film premiere weeks had no dedicated partner turning a theatrical
+            release into a multi-city audience event — producers wanted amplified reach around
+            launch, and cinemas had screen capacity to fill beyond standard showtimes.</p>
+          </div>
+          <div>
+            <h4>My Role</h4>
+            <p>Co-founded the business and led negotiations on both sides of the deal: offered
+            producers guaranteed audience reach in exchange for a fee, and rented cinema screens
+            directly to host events. Built and led a core team of ~20 plus a network of ~100
+            volunteers to plan and run screenings, filling seats primarily through organic social
+            media and community-building rather than paid acquisition.</p>
+          </div>
+          <div>
+            <h4>Result</h4>
+            <p>Scaled premiere-week events to more than 10 cities across Indonesia, with the
+            largest single event reaching an audience of approximately 10,000 — proof that
+            organic, community-led demand generation could support events at national scale.</p>
+          </div>
+        </div>
+        <div class="metrics">
+          <div class="metric"><div class="num">10+</div><div class="label">Cities across Indonesia</div></div>
+          <div class="metric"><div class="num">~10K</div><div class="label">Peak single-event audience</div></div>
+          <div class="metric"><div class="num">20 + 100</div><div class="label">Core team + volunteer network</div></div>
+          <div class="metric"><div class="num">2+ yrs</div><div class="label">Operating</div></div>
+        </div>
+        <div class="impact-box">
+          <h5>Why This Matters for Product &amp; Marketing Teams</h5>
+          <p>The transferable skill here is two-sided partnership negotiation — aligning a content
+          owner's launch goals with a venue's available capacity — paired with organic,
+          community-led demand generation that scaled to thousands of attendees without paid
+          media spend. That combination applies well beyond film: any company running local
+          activations, pop-ups, or regional launches across many markets faces the same
+          coordination problem.</p>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head">
+          <span class="entry-code">Codename: BevZ Rollout</span>
+          <span class="entry-date">MBA 6520, Predictive Analytics · Team Project</span>
+        </div>
+        <div class="entry-title">Predictive Model to Choose a Retail Rollout Strategy</div>
+        <div class="entry-tags">
+          <span class="entry-tag">Product Marketing</span>
+          <span class="entry-tag">Digital Marketing</span>
+        </div>
+        <div class="entry-sub">Team of 3 · Built the prediction model comparing two go-to-market plans</div>
+        <div class="sar">
+          <div>
+            <h4>Situation</h4>
+            <p>BevZ, an energy-drink brand, needed to choose between two store-level rollout plans
+            for its next scaling phase: a sales-rep-and-lower-price plan versus an endcap-and-demo
+            marketing plan.</p>
+          </div>
+          <div>
+            <h4>Action</h4>
+            <p>Built a prediction model from historical test data to estimate how sales reps,
+            endcaps, demos, and price each moved weekly unit sales, then applied it to both rollout
+            plans to project weekly revenue, cost, and net revenue per store.</p>
+          </div>
+          <div>
+            <h4>Result</h4>
+            <p>The model showed the Marketing Plan generated significantly stronger unit lift from
+            endcaps and demos than the sales-rep-led plan did from staffing, despite a higher retail
+            price — and recommended the Marketing Plan to leadership.</p>
+          </div>
+        </div>
+        <div class="metrics">
+          <div class="metric"><div class="num">+$238</div><div class="label">Net revenue gain per store/week</div></div>
+          <div class="metric"><div class="num">~6x</div><div class="label">Revenue per incremental $1 spent</div></div>
+          <div class="metric"><div class="num">$1,459</div><div class="label">Net revenue per store/week</div></div>
+        </div>
+        <div class="exhibit">
+          <img src="assets/exhibit-bevz.jpg" alt="Bar chart comparing weekly revenue, cost, and net revenue per store for Tony's Plan vs the Marketing Plan, showing a $238 net gain">
+          <div class="exhibit-cap">Exhibit — weekly revenue, cost &amp; net revenue per store, from the team's final report</div>
+        </div>
+        <div class="doc-links">
+          <a href="assets/bevz-full-report.pdf" target="_blank" rel="noopener">Read the full analysis (PDF)</a>
+        </div>
+        <div class="impact-box">
+          <h5>Why This Matters Beyond Beverage Retail</h5>
+          <p>The underlying skill here isn't specific to energy drinks — it's a repeatable way to
+          de-risk any rollout decision. Any business scaling across multiple stores, regions,
+          markets, or channels (retail, franchise, subscription, SaaS regional expansion) faces the
+          same question: which investment actually moves the number, and by how much? Building a
+          prediction model from small-scale test data — rather than rolling out on instinct or
+          copying a competitor — lets a company quantify the return on each option before
+          committing the full budget, and catch a costly mistake while it's still cheap to fix.</p>
+        </div>
+      </div>
+
+    </section>
+
+    <section id="approach">
+      <div class="section-head">
+        <span class="section-num">03</span>
+        <span class="section-title">Capabilities</span>
+      </div>
+      <div class="matrix">
+        <div class="cap-group">
+          <h4>Analytics &amp; Strategy</h4>
+          <ul>
+            <li>Predictive modeling — regression &amp; decision trees (JMP)</li>
+            <li>Data storytelling (Tableau)</li>
+            <li>Business analytics (Excel / Sheets)</li>
+          </ul>
+        </div>
+        <div class="cap-group">
+          <h4>Social Media &amp; Content</h4>
+          <ul>
+            <li>Short-form video production (TikTok)</li>
+            <li>Hook development &amp; content strategy</li>
+            <li>Community management (Instagram)</li>
+            <li>Content calendar &amp; publishing</li>
+          </ul>
+        </div>
+        <div class="cap-group">
+          <h4>Digital Marketing</h4>
+          <ul>
+            <li>Paid social advertising (Meta Ads Manager)</li>
+            <li>Ecommerce site build &amp; management (WordPress/Divi)</li>
+            <li>Hashtag &amp; discoverability strategy</li>
+            <li>Campaign performance analysis</li>
+          </ul>
+        </div>
+        <div class="cap-group">
+          <h4>Product &amp; GTM Strategy</h4><ul>
+            <li>Go-to-market rollout analysis</li>
+            <li>Repeatable content framework design</li>
+            <li>Cross-functional team collaboration</li>
+            <li>Business case development</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="tools">
+      <div class="section-head">
+        <span class="section-num">04</span>
+        <span class="section-title">Tools</span>
+      </div>
+      <div class="tags">
+        <span class="tag">Tableau</span>
+        <span class="tag">JMP</span>
+        <span class="tag">Excel / Google Sheets</span>
+        <span class="tag">WordPress + Divi</span>
+        <span class="tag">Meta Ads Manager</span>
+        <span class="tag">Instagram</span>
+        <span class="tag">TikTok</span>
+        <span class="tag">VN Editor</span>
+        <span class="tag">Notion</span>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-title">Looking for a marketer who connects content, channels, and numbers?</div>
+      <p style="color:var(--ink-soft); max-width:480px;">
+        Open to full-time Product Marketing, Social Media Management, and Digital Marketing roles.
+      </p>
+      <div class="footer-links">
+        <a href="mailto:llutfuntika@dons.usfca.edu">Email</a>
+        <a href="https://www.linkedin.com/in/lyalutfuntika/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="#">Resume</a>
+      </div>
+      <div class="footer-meta">Last updated — August 2026</div>
+    </div>
+  </footer>
+
+</div>
+
+
+
+
+
+
+
+
+</body></html>
